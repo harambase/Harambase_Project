@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youedata.cd.importData.dao.BaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.youedata.cd.test.pojo.BaseInfo" >
+    <id column="UID" property="uid" jdbcType="INTEGER" />
+    <result column="SEX" property="sex" jdbcType="INTEGER" />
+    <result column="BRITHDAY" property="brithday" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="ACTIVE" property="active" jdbcType="BIT" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    UID, SEX, BRITHDAY, ADDRESS, ACTIVE, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from baseinfo
+    where UID = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from baseinfo
+    where UID = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.youedata.cd.test.pojo.BaseInfo" >
+    insert into baseinfo (UID, SEX, BRITHDAY, 
+      ADDRESS, ACTIVE, STATUS
+      )
+    values (#{uid,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{brithday,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{active,jdbcType=BIT}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.youedata.cd.test.pojo.BaseInfo" >
+    insert into baseinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        UID,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="brithday != null" >
+        BRITHDAY,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="active != null" >
+        ACTIVE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="brithday != null" >
+        #{brithday,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youedata.cd.test.pojo.BaseInfo" >
+    update baseinfo
+    <set >
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="brithday != null" >
+        BRITHDAY = #{brithday,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        ACTIVE = #{active,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UID = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youedata.cd.test.pojo.BaseInfo" >
+    update baseinfo
+    set SEX = #{sex,jdbcType=INTEGER},
+      BRITHDAY = #{brithday,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      ACTIVE = #{active,jdbcType=BIT},
+      STATUS = #{status,jdbcType=VARCHAR}
+    where UID = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

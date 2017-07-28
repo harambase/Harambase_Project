@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youedata.cd.harambase.dao.MemberMapper" >
+  <resultMap id="BaseResultMap" type="com.youedata.cd.harambase.pojo.Member" >
+    <id column="USERID" property="userid" jdbcType="INTEGER" />
+    <result column="UNAME" property="uname" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="FNAME" property="fname" jdbcType="VARCHAR" />
+    <result column="LNAME" property="lname" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="CREATORID" property="creatorid" jdbcType="INTEGER" />
+    <result column="ISBUYER" property="isbuyer" jdbcType="INTEGER" />
+    <result column="ISELLER" property="iseller" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USERID, UNAME, EMAIL, FNAME, LNAME, PASSWORD, CREATORID, ISBUYER, ISELLER
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from harambase_member
+    where USERID = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from harambase_member
+    where USERID = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.youedata.cd.harambase.pojo.Member" >
+    insert into harambase_member values (#{userid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{fname,jdbcType=VARCHAR}, #{lname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{creatorid,jdbcType=INTEGER}, #{isbuyer,jdbcType=INTEGER}, #{iseller,jdbcType=INTEGER});
+  </insert>
+  <insert id="insertSelective" parameterType="com.youedata.cd.harambase.pojo.Member" >
+    insert into harambase_member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="uname != null" >
+        UNAME,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="fname != null" >
+        FNAME,
+      </if>
+      <if test="lname != null" >
+        LNAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="creatorid != null" >
+        CREATORID,
+      </if>
+      <if test="isbuyer != null" >
+        ISBUYER,
+      </if>
+      <if test="iseller != null" >
+        ISELLER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fname != null" >
+        #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="lname != null" >
+        #{lname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorid != null" >
+        #{creatorid,jdbcType=INTEGER},
+      </if>
+      <if test="isbuyer != null" >
+        #{isbuyer,jdbcType=INTEGER},
+      </if>
+      <if test="iseller != null" >
+        #{iseller,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="updateByPrimaryKeySelective" resultType = "Integer" parameterType="com.youedata.cd.harambase.pojo.Member" >
+    UPDATE_PROFILE_PRO(
+    <set >
+        USERID = #{userid,jdbcType=INTEGER},
+      <if test="uname != null" >
+        UNAME = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fname != null" >
+        FNAME = #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="lname != null" >
+        LNAME = #{lname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+        SUCC
+    </set>);
+  </select>
+  <select id="search_item" parameterType="com.youedata.cd.harambase.pojo.Search" resultType="com.youedata.cd.harambase.pojo.SearchResult">
+    CALL SEARCH_ITEM_PRO(#{tid,jdbcType=INTEGER},#{keyword,jdbcType=VARCHAR},#{tcategory,jdbcType=VARCHAR},#{tauctionstarttime,jdbcType=TIMESTAMP},#{tauctionendtime,jdbcType=TIMESTAMP},#{curbidmin,jdbcType=DOUBLE},#{curbidmax,jdbcType=DOUBLE});
+  </select>
+
+  <update id="updateByPrimaryKey" parameterType="com.youedata.cd.harambase.pojo.Member" >
+    update harambase_member
+    set UNAME = #{uname,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      FNAME = #{fname,jdbcType=VARCHAR},
+      LNAME = #{lname,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      CREATORID = #{creatorid,jdbcType=INTEGER},
+      ISBUYER = #{isbuyer,jdbcType=INTEGER},
+      ISELLER = #{iseller,jdbcType=INTEGER}
+    where USERID = #{userid,jdbcType=INTEGER}
+  </update>
+  <select id="login" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM HARAMBASE_MEMBER WHERE UNAME=#{arg0} AND PASSWORD = #{arg1};
+  </select>
+
+  <select id="memberMap" resultMap= "BaseResultMap">
+    SELECT * FROM HARAMBASE_MEMBER;
+  </select>
+
+</mapper>

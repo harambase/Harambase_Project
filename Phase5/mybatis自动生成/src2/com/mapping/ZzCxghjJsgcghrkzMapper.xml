@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youedata.cd.importData.dao.ZzCxghjJsgcghrkzMapper" >
+  <resultMap id="BaseResultMap" type="com.youedata.cd.importData.pojo.ZzCxghjJsgcghrkz" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="refid" property="refid" jdbcType="VARCHAR" />
+    <result column="zch" property="zch" jdbcType="VARCHAR" />
+    <result column="fzjg" property="fzjg" jdbcType="VARCHAR" />
+    <result column="fzrq" property="fzrq" jdbcType="VARCHAR" />
+    <result column="jsdw" property="jsdw" jdbcType="VARCHAR" />
+    <result column="jsxmmc" property="jsxmmc" jdbcType="VARCHAR" />
+    <result column="jswz" property="jswz" jdbcType="VARCHAR" />
+    <result column="jsgm" property="jsgm" jdbcType="VARCHAR" />
+    <result column="zzjgdm" property="zzjgdm" jdbcType="VARCHAR" />
+    <result column="zjbh" property="zjbh" jdbcType="VARCHAR" />
+    <result column="zt" property="zt" jdbcType="VARCHAR" />
+    <result column="yxqs" property="yxqs" jdbcType="VARCHAR" />
+    <result column="yxqz" property="yxqz" jdbcType="VARCHAR" />
+    <result column="zzzt" property="zzzt" jdbcType="VARCHAR" />
+    <result column="opseq" property="opseq" jdbcType="VARCHAR" />
+    <result column="opdes" property="opdes" jdbcType="VARCHAR" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, refid, zch, fzjg, fzrq, jsdw, jsxmmc, jswz, jsgm, zzjgdm, zjbh, zt, yxqs, yxqz, 
+    zzzt, opseq, opdes, operator, create_time, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from zz_cxghj_jsgcjgghrkz
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from zz_cxghj_jsgcjgghrkz
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.youedata.cd.importData.pojo.ZzCxghjJsgcghrkz" >
+    insert into zz_cxghj_jsgcjgghrkz (id, refid, zch, 
+      fzjg, fzrq, jsdw, jsxmmc, 
+      jswz, jsgm, zzjgdm, 
+      zjbh, zt, yxqs, yxqz, 
+      zzzt, opseq, opdes, 
+      operator, create_time, modify_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{refid,jdbcType=VARCHAR}, #{zch,jdbcType=VARCHAR}, 
+      #{fzjg,jdbcType=VARCHAR}, #{fzrq,jdbcType=VARCHAR}, #{jsdw,jdbcType=VARCHAR}, #{jsxmmc,jdbcType=VARCHAR}, 
+      #{jswz,jdbcType=VARCHAR}, #{jsgm,jdbcType=VARCHAR}, #{zzjgdm,jdbcType=VARCHAR}, 
+      #{zjbh,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, #{yxqs,jdbcType=VARCHAR}, #{yxqz,jdbcType=VARCHAR}, 
+      #{zzzt,jdbcType=VARCHAR}, #{opseq,jdbcType=VARCHAR}, #{opdes,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{modifyTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.youedata.cd.importData.pojo.ZzCxghjJsgcghrkz" >
+    insert into zz_cxghj_jsgcjgghrkz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="refid != null" >
+        refid,
+      </if>
+      <if test="zch != null" >
+        zch,
+      </if>
+      <if test="fzjg != null" >
+        fzjg,
+      </if>
+      <if test="fzrq != null" >
+        fzrq,
+      </if>
+      <if test="jsdw != null" >
+        jsdw,
+      </if>
+      <if test="jsxmmc != null" >
+        jsxmmc,
+      </if>
+      <if test="jswz != null" >
+        jswz,
+      </if>
+      <if test="jsgm != null" >
+        jsgm,
+      </if>
+      <if test="zzjgdm != null" >
+        zzjgdm,
+      </if>
+      <if test="zjbh != null" >
+        zjbh,
+      </if>
+      <if test="zt != null" >
+        zt,
+      </if>
+      <if test="yxqs != null" >
+        yxqs,
+      </if>
+      <if test="yxqz != null" >
+        yxqz,
+      </if>
+      <if test="zzzt != null" >
+        zzzt,
+      </if>
+      <if test="opseq != null" >
+        opseq,
+      </if>
+      <if test="opdes != null" >
+        opdes,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="refid != null" >
+        #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="zch != null" >
+        #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="fzjg != null" >
+        #{fzjg,jdbcType=VARCHAR},
+      </if>
+      <if test="fzrq != null" >
+        #{fzrq,jdbcType=VARCHAR},
+      </if>
+      <if test="jsdw != null" >
+        #{jsdw,jdbcType=VARCHAR},
+      </if>
+      <if test="jsxmmc != null" >
+        #{jsxmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="jswz != null" >
+        #{jswz,jdbcType=VARCHAR},
+      </if>
+      <if test="jsgm != null" >
+        #{jsgm,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjgdm != null" >
+        #{zzjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zjbh != null" >
+        #{zjbh,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="yxqs != null" >
+        #{yxqs,jdbcType=VARCHAR},
+      </if>
+      <if test="yxqz != null" >
+        #{yxqz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzzt != null" >
+        #{zzzt,jdbcType=VARCHAR},
+      </if>
+      <if test="opseq != null" >
+        #{opseq,jdbcType=VARCHAR},
+      </if>
+      <if test="opdes != null" >
+        #{opdes,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youedata.cd.importData.pojo.ZzCxghjJsgcghrkz" >
+    update zz_cxghj_jsgcjgghrkz
+    <set >
+      <if test="refid != null" >
+        refid = #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="zch != null" >
+        zch = #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="fzjg != null" >
+        fzjg = #{fzjg,jdbcType=VARCHAR},
+      </if>
+      <if test="fzrq != null" >
+        fzrq = #{fzrq,jdbcType=VARCHAR},
+      </if>
+      <if test="jsdw != null" >
+        jsdw = #{jsdw,jdbcType=VARCHAR},
+      </if>
+      <if test="jsxmmc != null" >
+        jsxmmc = #{jsxmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="jswz != null" >
+        jswz = #{jswz,jdbcType=VARCHAR},
+      </if>
+      <if test="jsgm != null" >
+        jsgm = #{jsgm,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjgdm != null" >
+        zzjgdm = #{zzjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zjbh != null" >
+        zjbh = #{zjbh,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        zt = #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="yxqs != null" >
+        yxqs = #{yxqs,jdbcType=VARCHAR},
+      </if>
+      <if test="yxqz != null" >
+        yxqz = #{yxqz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzzt != null" >
+        zzzt = #{zzzt,jdbcType=VARCHAR},
+      </if>
+      <if test="opseq != null" >
+        opseq = #{opseq,jdbcType=VARCHAR},
+      </if>
+      <if test="opdes != null" >
+        opdes = #{opdes,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youedata.cd.importData.pojo.ZzCxghjJsgcghrkz" >
+    update zz_cxghj_jsgcjgghrkz
+    set refid = #{refid,jdbcType=VARCHAR},
+      zch = #{zch,jdbcType=VARCHAR},
+      fzjg = #{fzjg,jdbcType=VARCHAR},
+      fzrq = #{fzrq,jdbcType=VARCHAR},
+      jsdw = #{jsdw,jdbcType=VARCHAR},
+      jsxmmc = #{jsxmmc,jdbcType=VARCHAR},
+      jswz = #{jswz,jdbcType=VARCHAR},
+      jsgm = #{jsgm,jdbcType=VARCHAR},
+      zzjgdm = #{zzjgdm,jdbcType=VARCHAR},
+      zjbh = #{zjbh,jdbcType=VARCHAR},
+      zt = #{zt,jdbcType=VARCHAR},
+      yxqs = #{yxqs,jdbcType=VARCHAR},
+      yxqz = #{yxqz,jdbcType=VARCHAR},
+      zzzt = #{zzzt,jdbcType=VARCHAR},
+      opseq = #{opseq,jdbcType=VARCHAR},
+      opdes = #{opdes,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

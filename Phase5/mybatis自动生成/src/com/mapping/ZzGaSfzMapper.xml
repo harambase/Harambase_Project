@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youedata.cd.importData.dao.ZzGaSfzMapper" >
+  <resultMap id="BaseResultMap" type="com.youedata.cd.importData.pojo.ZzGaSfz" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="refid" property="refid" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="xb" property="xb" jdbcType="VARCHAR" />
+    <result column="mz" property="mz" jdbcType="VARCHAR" />
+    <result column="csrq" property="csrq" jdbcType="VARCHAR" />
+    <result column="zz" property="zz" jdbcType="VARCHAR" />
+    <result column="sfzh" property="sfzh" jdbcType="VARCHAR" />
+    <result column="qfjg" property="qfjg" jdbcType="VARCHAR" />
+    <result column="yxqks" property="yxqks" jdbcType="VARCHAR" />
+    <result column="yxqjs" property="yxqjs" jdbcType="VARCHAR" />
+    <result column="zp" property="zp" jdbcType="VARCHAR" />
+    <result column="zt" property="zt" jdbcType="VARCHAR" />
+    <result column="sfyx" property="sfyx" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="VARCHAR" />
+    <result column="is_seal" property="isSeal" jdbcType="VARCHAR" />
+    <result column="opseq" property="opseq" jdbcType="VARCHAR" />
+    <result column="opdes" property="opdes" jdbcType="VARCHAR" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="creat_time" property="creatTime" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, refid, xm, xb, mz, csrq, zz, sfzh, qfjg, yxqks, yxqjs, zp, zt, sfyx, is_valid, 
+    is_seal, opseq, opdes, operator, creat_time, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from zz_ga_sfz
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from zz_ga_sfz
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.youedata.cd.importData.pojo.ZzGaSfz" >
+    insert into zz_ga_sfz (id, refid, xm, 
+      xb, mz, csrq, zz, 
+      sfzh, qfjg, yxqks, 
+      yxqjs, zp, zt, sfyx, 
+      is_valid, is_seal, opseq, 
+      opdes, operator, creat_time, 
+      modify_time)
+    values (#{id,jdbcType=INTEGER}, #{refid,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, 
+      #{xb,jdbcType=VARCHAR}, #{mz,jdbcType=VARCHAR}, #{csrq,jdbcType=VARCHAR}, #{zz,jdbcType=VARCHAR}, 
+      #{sfzh,jdbcType=VARCHAR}, #{qfjg,jdbcType=VARCHAR}, #{yxqks,jdbcType=VARCHAR}, 
+      #{yxqjs,jdbcType=VARCHAR}, #{zp,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, #{sfyx,jdbcType=VARCHAR}, 
+      #{isValid,jdbcType=VARCHAR}, #{isSeal,jdbcType=VARCHAR}, #{opseq,jdbcType=VARCHAR}, 
+      #{opdes,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, #{creatTime,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.youedata.cd.importData.pojo.ZzGaSfz" >
+    insert into zz_ga_sfz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="refid != null" >
+        refid,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="xb != null" >
+        xb,
+      </if>
+      <if test="mz != null" >
+        mz,
+      </if>
+      <if test="csrq != null" >
+        csrq,
+      </if>
+      <if test="zz != null" >
+        zz,
+      </if>
+      <if test="sfzh != null" >
+        sfzh,
+      </if>
+      <if test="qfjg != null" >
+        qfjg,
+      </if>
+      <if test="yxqks != null" >
+        yxqks,
+      </if>
+      <if test="yxqjs != null" >
+        yxqjs,
+      </if>
+      <if test="zp != null" >
+        zp,
+      </if>
+      <if test="zt != null" >
+        zt,
+      </if>
+      <if test="sfyx != null" >
+        sfyx,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="isSeal != null" >
+        is_seal,
+      </if>
+      <if test="opseq != null" >
+        opseq,
+      </if>
+      <if test="opdes != null" >
+        opdes,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="refid != null" >
+        #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="mz != null" >
+        #{mz,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null" >
+        #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="zz != null" >
+        #{zz,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzh != null" >
+        #{sfzh,jdbcType=VARCHAR},
+      </if>
+      <if test="qfjg != null" >
+        #{qfjg,jdbcType=VARCHAR},
+      </if>
+      <if test="yxqks != null" >
+        #{yxqks,jdbcType=VARCHAR},
+      </if>
+      <if test="yxqjs != null" >
+        #{yxqjs,jdbcType=VARCHAR},
+      </if>
+      <if test="zp != null" >
+        #{zp,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="sfyx != null" >
+        #{sfyx,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="isSeal != null" >
+        #{isSeal,jdbcType=VARCHAR},
+      </if>
+      <if test="opseq != null" >
+        #{opseq,jdbcType=VARCHAR},
+      </if>
+      <if test="opdes != null" >
+        #{opdes,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youedata.cd.importData.pojo.ZzGaSfz" >
+    update zz_ga_sfz
+    <set >
+      <if test="refid != null" >
+        refid = #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        xb = #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="mz != null" >
+        mz = #{mz,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null" >
+        csrq = #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="zz != null" >
+        zz = #{zz,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzh != null" >
+        sfzh = #{sfzh,jdbcType=VARCHAR},
+      </if>
+      <if test="qfjg != null" >
+        qfjg = #{qfjg,jdbcType=VARCHAR},
+      </if>
+      <if test="yxqks != null" >
+        yxqks = #{yxqks,jdbcType=VARCHAR},
+      </if>
+      <if test="yxqjs != null" >
+        yxqjs = #{yxqjs,jdbcType=VARCHAR},
+      </if>
+      <if test="zp != null" >
+        zp = #{zp,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        zt = #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="sfyx != null" >
+        sfyx = #{sfyx,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="isSeal != null" >
+        is_seal = #{isSeal,jdbcType=VARCHAR},
+      </if>
+      <if test="opseq != null" >
+        opseq = #{opseq,jdbcType=VARCHAR},
+      </if>
+      <if test="opdes != null" >
+        opdes = #{opdes,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youedata.cd.importData.pojo.ZzGaSfz" >
+    update zz_ga_sfz
+    set refid = #{refid,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      xb = #{xb,jdbcType=VARCHAR},
+      mz = #{mz,jdbcType=VARCHAR},
+      csrq = #{csrq,jdbcType=VARCHAR},
+      zz = #{zz,jdbcType=VARCHAR},
+      sfzh = #{sfzh,jdbcType=VARCHAR},
+      qfjg = #{qfjg,jdbcType=VARCHAR},
+      yxqks = #{yxqks,jdbcType=VARCHAR},
+      yxqjs = #{yxqjs,jdbcType=VARCHAR},
+      zp = #{zp,jdbcType=VARCHAR},
+      zt = #{zt,jdbcType=VARCHAR},
+      sfyx = #{sfyx,jdbcType=VARCHAR},
+      is_valid = #{isValid,jdbcType=VARCHAR},
+      is_seal = #{isSeal,jdbcType=VARCHAR},
+      opseq = #{opseq,jdbcType=VARCHAR},
+      opdes = #{opdes,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

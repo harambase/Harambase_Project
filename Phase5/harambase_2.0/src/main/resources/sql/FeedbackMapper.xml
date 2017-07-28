@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youedata.cd.harambase.dao.FeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.youedata.cd.harambase.pojo.Feedback" >
+    <id column="ITEMID" property="itemid" jdbcType="INTEGER" />
+    <result column="OVERALLRATING" property="overallrating" jdbcType="DOUBLE" />
+    <result column="ITEMQUALITY" property="itemquality" jdbcType="DOUBLE" />
+    <result column="DELIVERY" property="delivery" jdbcType="DOUBLE" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ITEMID, OVERALLRATING, ITEMQUALITY, DELIVERY, COMMENTS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from harambase_feedback
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from harambase_feedback
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.youedata.cd.harambase.pojo.Feedback" >
+    insert into harambase_feedback (ITEMID, OVERALLRATING, ITEMQUALITY, 
+      DELIVERY, COMMENTS)
+    values (#{itemid,jdbcType=INTEGER}, #{overallrating,jdbcType=DOUBLE}, #{itemquality,jdbcType=DOUBLE}, 
+      #{delivery,jdbcType=DOUBLE}, #{comments,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.youedata.cd.harambase.pojo.Feedback" >
+    insert into harambase_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemid != null" >
+        ITEMID,
+      </if>
+      <if test="overallrating != null" >
+        OVERALLRATING,
+      </if>
+      <if test="itemquality != null" >
+        ITEMQUALITY,
+      </if>
+      <if test="delivery != null" >
+        DELIVERY,
+      </if>
+      <if test="comments != null" >
+        COMMENTS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemid != null" >
+        #{itemid,jdbcType=INTEGER},
+      </if>
+      <if test="overallrating != null" >
+        #{overallrating,jdbcType=DOUBLE},
+      </if>
+      <if test="itemquality != null" >
+        #{itemquality,jdbcType=DOUBLE},
+      </if>
+      <if test="delivery != null" >
+        #{delivery,jdbcType=DOUBLE},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youedata.cd.harambase.pojo.Feedback" >
+    update harambase_feedback
+    <set >
+      <if test="overallrating != null" >
+        OVERALLRATING = #{overallrating,jdbcType=DOUBLE},
+      </if>
+      <if test="itemquality != null" >
+        ITEMQUALITY = #{itemquality,jdbcType=DOUBLE},
+      </if>
+      <if test="delivery != null" >
+        DELIVERY = #{delivery,jdbcType=DOUBLE},
+      </if>
+      <if test="comments != null" >
+        COMMENTS = #{comments,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youedata.cd.harambase.pojo.Feedback" >
+    update harambase_feedback
+    set OVERALLRATING = #{overallrating,jdbcType=DOUBLE},
+      ITEMQUALITY = #{itemquality,jdbcType=DOUBLE},
+      DELIVERY = #{delivery,jdbcType=DOUBLE},
+      COMMENTS = #{comments,jdbcType=VARCHAR}
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>

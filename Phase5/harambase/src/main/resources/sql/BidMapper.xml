@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youedata.cd.harambase.dao.BidMapper" >
+  <resultMap id="BaseResultMap" type="com.youedata.cd.harambase.pojo.Bid" >
+    <id column="USERID" property="userid" jdbcType="INTEGER" />
+    <id column="ITEMID" property="itemid" jdbcType="INTEGER" />
+    <result column="BIDDINGTIME" property="biddingtime" jdbcType="TIMESTAMP" />
+    <result column="MAXBIDLIMIT" property="maxbidlimit" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USERID, ITEMID, BIDDINGTIME, MAXBIDLIMIT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.youedata.cd.harambase.pojo.BidKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from harambase_bid
+    where USERID = #{userid,jdbcType=INTEGER}
+      and ITEMID = #{itemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.youedata.cd.harambase.pojo.BidKey" >
+    delete from harambase_bid
+    where USERID = #{userid,jdbcType=INTEGER}
+      and ITEMID = #{itemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.youedata.cd.harambase.pojo.Bid" >
+    insert into harambase_bid values (#{userid,jdbcType=INTEGER}, #{itemid,jdbcType=INTEGER}, #{biddingtime,jdbcType=TIMESTAMP}, #{maxbidlimit,jdbcType=DOUBLE});
+  </insert>
+  <insert id="insertSelective" parameterType="com.youedata.cd.harambase.pojo.Bid" >
+    insert into harambase_bid
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="itemid != null" >
+        ITEMID,
+      </if>
+      <if test="biddingtime != null" >
+        BIDDINGTIME,
+      </if>
+      <if test="maxbidlimit != null" >
+        MAXBIDLIMIT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="itemid != null" >
+        #{itemid,jdbcType=INTEGER},
+      </if>
+      <if test="biddingtime != null" >
+        #{biddingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxbidlimit != null" >
+        #{maxbidlimit,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youedata.cd.harambase.pojo.Bid" >
+    update harambase_bid
+    <set >
+      <if test="biddingtime != null" >
+        BIDDINGTIME = #{biddingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxbidlimit != null" >
+        MAXBIDLIMIT = #{maxbidlimit,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=INTEGER}
+      and ITEMID = #{itemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youedata.cd.harambase.pojo.Bid" >
+    update harambase_bid
+    set BIDDINGTIME = #{biddingtime,jdbcType=TIMESTAMP},
+      MAXBIDLIMIT = #{maxbidlimit,jdbcType=DOUBLE}
+    where USERID = #{userid,jdbcType=INTEGER}
+      and ITEMID = #{itemid,jdbcType=INTEGER}
+  </update>
+
+  <select  id="listofbidders" parameterType="Integer" resultType="com.youedata.cd.harambase.pojo.ListOfBidders">
+    SELECT * FROM LIST_OF_BIDDERS WHERE ITEMID = #{arg0};
+  </select>
+
+  <select id="maxBidOfItem" parameterType="Integer" resultType="Double">
+    SELECT  MAX(MAXBIDLIMIT) FROM HARAMBASE_BID WHERE ITEMID = #{arg0};
+  </select>
+</mapper>

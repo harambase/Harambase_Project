@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youedata.cd.harambase.dao.ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.youedata.cd.harambase.pojo.Item" >
+    <id column="ITEMID" property="itemid" jdbcType="INTEGER" />
+    <result column="ITEMNAME" property="itemname" jdbcType="VARCHAR" />
+    <result column="ITEMCATEGORY" property="itemcategory" jdbcType="VARCHAR" />
+    <result column="STARTPRICE" property="startprice" jdbcType="DOUBLE" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="SELLERID" property="sellerid" jdbcType="INTEGER" />
+    <result column="AUCTIONSTARTTIME" property="auctionstarttime" jdbcType="TIMESTAMP" />
+    <result column="AUCTIONENDTIME" property="auctionendtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ITEMID, ITEMNAME, ITEMCATEGORY, STARTPRICE, DESCRIPTION, SELLERID, AUCTIONSTARTTIME, 
+    AUCTIONENDTIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from harambase_item
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from harambase_item
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.youedata.cd.harambase.pojo.Item" >
+    insert into harambase_item values (1, #{itemname,jdbcType=VARCHAR}, #{itemcategory,jdbcType=VARCHAR}, #{startprice,jdbcType=DOUBLE}, #{description,jdbcType=VARCHAR}, #{sellerid,jdbcType=INTEGER}, #{auctionstarttime,jdbcType=TIMESTAMP}, #{auctionendtime,jdbcType=TIMESTAMP});
+  </insert>
+  <insert id="insertSelective" parameterType="com.youedata.cd.harambase.pojo.Item" >
+    insert into harambase_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemid != null" >
+        ITEMID,
+      </if>
+      <if test="itemname != null" >
+        ITEMNAME,
+      </if>
+      <if test="itemcategory != null" >
+        ITEMCATEGORY,
+      </if>
+      <if test="startprice != null" >
+        STARTPRICE,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="sellerid != null" >
+        SELLERID,
+      </if>
+      <if test="auctionstarttime != null" >
+        AUCTIONSTARTTIME,
+      </if>
+      <if test="auctionendtime != null" >
+        AUCTIONENDTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemid != null" >
+        #{itemid,jdbcType=INTEGER},
+      </if>
+      <if test="itemname != null" >
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemcategory != null" >
+        #{itemcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="startprice != null" >
+        #{startprice,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerid != null" >
+        #{sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="auctionstarttime != null" >
+        #{auctionstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auctionendtime != null" >
+        #{auctionendtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youedata.cd.harambase.pojo.Item" >
+    update harambase_item
+    <set >
+      <if test="itemname != null" >
+        ITEMNAME = #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemcategory != null" >
+        ITEMCATEGORY = #{itemcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="startprice != null" >
+        STARTPRICE = #{startprice,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerid != null" >
+        SELLERID = #{sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="auctionstarttime != null" >
+        AUCTIONSTARTTIME = #{auctionstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auctionendtime != null" >
+        AUCTIONENDTIME = #{auctionendtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youedata.cd.harambase.pojo.Item" >
+    update harambase_item
+    set ITEMNAME = #{itemname,jdbcType=VARCHAR},
+      ITEMCATEGORY = #{itemcategory,jdbcType=VARCHAR},
+      STARTPRICE = #{startprice,jdbcType=DOUBLE},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      SELLERID = #{sellerid,jdbcType=INTEGER},
+      AUCTIONSTARTTIME = #{auctionstarttime,jdbcType=TIMESTAMP},
+      AUCTIONENDTIME = #{auctionendtime,jdbcType=TIMESTAMP}
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </update>
+
+  <select  id="bidonList" parameterType="Integer" resultType="com.youedata.cd.harambase.pojo.ListOfBidOn">
+    SELECT * FROM LIST_OF_BID_ON WHERE USERID = #{arg0};
+  </select>
+
+  <select  id="boughtList" parameterType="Integer" resultType="com.youedata.cd.harambase.pojo.ListOfBought">
+    SELECT * FROM LIST_OF_BOUGHT WHERE USERID = #{arg0};
+  </select>
+
+  <select  id="itemList" parameterType="Integer" resultType="com.youedata.cd.harambase.pojo.ListOfItems">
+    SELECT * FROM LIST_OF_ITEMS WHERE SELLERID = #{arg0};
+  </select>
+
+  <select  id="itemListbyTid" parameterType="Integer" resultType="com.youedata.cd.harambase.pojo.ListOfItems">
+    SELECT * FROM LIST_OF_ITEMS WHERE ITEMID = #{arg0};
+  </select>
+
+</mapper>
